@@ -1,10 +1,10 @@
-#include "StandartInput.hpp"
+#include "StandardInput.hpp"
 
 #include <cstdio>
 
 namespace touch_typing {
 
-auto StandartInput::readSymbol() -> int
+auto StandardInput::readSymbol() -> int
 {
     return std::getchar();
 }

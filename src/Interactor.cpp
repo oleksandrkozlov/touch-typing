@@ -2,14 +2,14 @@
 
 #include "Output.hpp"
 #include "OutputResult.hpp"
-#include "StandartInput.hpp"
+#include "StandardInput.hpp"
 
 #include <iostream>
 
 namespace touch_typing {
 
 Interactor::Interactor(Output& output) noexcept
-    : m_input{std::make_unique<touch_typing::StandartInput>()}
+    : m_input{std::make_unique<touch_typing::StandardInput>()}
     , m_output{output}
 {
     using namespace std::string_literals;

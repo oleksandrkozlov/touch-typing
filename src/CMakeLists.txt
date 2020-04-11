@@ -1,4 +1,4 @@
-add_library(touchtyping STATIC StandartInput.cpp StandartOutput.cpp Interactor.cpp)
+add_library(touchtyping STATIC StandardInput.cpp StandardOutput.cpp Interactor.cpp)
 
 add_executable(touch_typing TouchTyping.cpp)
 

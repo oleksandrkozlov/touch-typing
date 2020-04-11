@@ -1,4 +1,4 @@
-#include "StandartOutput.hpp"
+#include "StandardOutput.hpp"
 
 #include "OutputResult.hpp"
 
@@ -6,12 +6,12 @@
 
 namespace touch_typing {
 
-auto StandartOutput::onGotInputText(const std::string& inputText) -> void
+auto StandardOutput::onGotInputText(const std::string& inputText) -> void
 {
     std::cout << "Input: " << inputText << std::endl;
 }
 
-auto StandartOutput::onGotOutputResult(const OutputResult outputResult)
+auto StandardOutput::onGotOutputResult(const OutputResult outputResult)
     -> void
 {
     switch (outputResult.answer) {
