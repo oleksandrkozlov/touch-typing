@@ -1,15 +1,21 @@
-#include "Interactor.hpp"
-#include "StandardOutput.hpp"
+#include "Controller.hpp"
+#include "StandardInteractor.hpp"
+#include "StandardPresenter.hpp"
 
 #include <iostream>
 #include <memory>
 
 int main()
 {
-    auto output = std::unique_ptr<touch_typing::Output>{
-        std::make_unique<touch_typing::StandardOutput>()};
+    auto presenter = std::unique_ptr<touch_typing::Output>{
+        std::make_unique<touch_typing::StandardPresenter>()};
 
-    auto interactor = touch_typing::Interactor{*output};
+    auto interactor = std::unique_ptr<touch_typing::Input>{
+        std::make_unique<touch_typing::StandardInteractor>(*presenter)};
+
+    auto controller = touch_typing::Controller{*interactor};
+
+    controller.enterSymbols("Hello , World!");
 
     return 0;
 }

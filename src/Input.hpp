@@ -15,7 +15,7 @@ protected:
 public:
     virtual ~Input() = default;
 
-    virtual auto readSymbol() -> int = 0;
+    virtual auto enterSymbol(int enteredSymbol) -> bool = 0;
 };
 
 } // namespace touch_typing
