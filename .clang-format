@@ -15,6 +15,7 @@ IncludeCategories:
     Priority:        2
   - Regex:           '^<[^.]+>$'
     Priority:        3
+IncludeIsMainRegex: '(Tests)?$'
 Cpp11BracedListStyle: true
 NamespaceIndentation: None
 SpaceAfterTemplateKeyword: false
