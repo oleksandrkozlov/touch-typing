@@ -10,7 +10,7 @@ Controller::Controller(Input& input) noexcept
     initscr();
 }
 
-Controller::~Controller()
+Controller::~Controller() noexcept
 {
     endwin();
 }

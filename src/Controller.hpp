@@ -4,7 +4,6 @@
 #include "Input.hpp"
 
 #include <functional>
-#include <string_view>
 
 namespace touch_typing {
 
