@@ -11,8 +11,15 @@ namespace touch_typing {
 class Controller {
 public:
     explicit Controller(Input& input) noexcept;
+    Controller(Controller&& other) = default;
+    Controller(const Controller& other) = delete;
 
-    auto enterSymbols(std::string_view enterSymbols) -> void;
+    auto operator=(Controller&& other) -> Controller& = default;
+    auto operator=(const Controller& other) -> Controller& = delete;
+
+    ~Controller() noexcept;
+
+    auto readSymbols() -> void;
 
 private:
     std::reference_wrapper<Input> m_input;

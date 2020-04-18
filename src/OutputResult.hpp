@@ -7,6 +7,7 @@ struct OutputResult {
     enum class Answer {
         Wrong,
         Correct,
+        Backspace,
     };
 
     int expectedSymbol;

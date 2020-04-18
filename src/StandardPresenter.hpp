@@ -7,7 +7,7 @@ namespace touch_typing {
 
 class StandardPresenter : public Output {
 private:
-    auto onGotInputText(const std::string& inputText) -> void override;
+    auto onGotInputText(std::string inputText) -> void override;
     auto onGotOutputResult(OutputResult result) -> void override;
 };
 

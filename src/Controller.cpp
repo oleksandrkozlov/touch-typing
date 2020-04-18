@@ -1,18 +1,24 @@
 #include "Controller.hpp"
 
+#include <ncurses.h>
+
 namespace touch_typing {
 
 Controller::Controller(Input& input) noexcept
     : m_input{input}
 {
+    initscr();
 }
 
-auto Controller::enterSymbols(const std::string_view enteredSymbols) -> void
+Controller::~Controller()
 {
-    std::size_t pos = 0;
+    endwin();
+}
 
-    while (m_input.get().enterSymbol(enteredSymbols.at(pos)))
-        ++pos;
+auto Controller::readSymbols() -> void
+{
+    while (m_input.get().enterSymbol(getch()))
+        ;
 }
 
 } // namespace touch_typing

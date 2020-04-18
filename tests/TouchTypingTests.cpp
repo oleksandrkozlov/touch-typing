@@ -9,7 +9,7 @@ namespace touch_typing {
 
 class TouchTypingTests : public testing::Test, public Output {
 private:
-    auto onGotInputText(const std::string& inputText) -> void override
+    auto onGotInputText(std::string inputText) -> void override
     {
         ASSERT_EQ(m_inputText, inputText);
     }

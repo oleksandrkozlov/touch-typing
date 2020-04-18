@@ -25,10 +25,17 @@ auto Interactor::enterSymbol(const int enteredSymbol) -> bool
         static_cast<decltype(enteredSymbol)>(m_inputText.at(m_position));
 
     auto answer = OutputResult::Answer::Wrong;
+    const auto backspace = 127;
 
-    if (expectedSymbol == enteredSymbol) {
+    if (enteredSymbol == backspace) {
+        if (m_position)
+            --m_position;
+        answer = OutputResult::Answer::Backspace;
+    } else if (expectedSymbol == enteredSymbol) {
         ++m_position;
         answer = OutputResult::Answer::Correct;
+    } else {
+        ++m_position;
     }
 
     m_output.get().onGotOutputResult(
@@ -37,6 +44,6 @@ auto Interactor::enterSymbol(const int enteredSymbol) -> bool
     if (m_inputTextSize == m_position)
         return false;
     return true;
-}
+    }
 
 } // namespace touch_typing

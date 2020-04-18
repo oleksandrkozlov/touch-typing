@@ -19,8 +19,8 @@ protected:
 public:
     virtual ~Output() = default;
 
-    virtual auto onGotInputText([
-        [maybe_unused]] const std::string& inputText) -> void
+    virtual auto onGotInputText([[maybe_unused]] std::string inputText)
+        -> void
     {
     }
 

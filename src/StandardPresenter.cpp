@@ -6,7 +6,7 @@
 
 namespace touch_typing {
 
-auto StandardPresenter::onGotInputText(const std::string& inputText) -> void
+auto StandardPresenter::onGotInputText(std::string inputText) -> void
 {
     std::cout << "Input: " << inputText << std::endl;
 }
@@ -20,6 +20,7 @@ auto StandardPresenter::onGotOutputResult(
         case OutputResult::Answer::Correct:
             break;
         case OutputResult::Answer::Wrong:
+        case OutputResult::Answer::Backspace:
             std::cout << "try again: '"
                       << static_cast<char>(outputResult.expectedSymbol)
                       << "'" << std::endl;
