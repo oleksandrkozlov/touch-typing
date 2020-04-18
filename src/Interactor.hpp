@@ -10,9 +10,9 @@ namespace touch_typing {
 
 class Output;
 
-class StandardInteractor : public Input {
+class Interactor : public Input {
 public:
-    explicit StandardInteractor(Output& output) noexcept;
+    explicit Interactor(Output& output) noexcept;
 
 private:
     auto enterSymbol(int enteredSymbol) -> bool override;

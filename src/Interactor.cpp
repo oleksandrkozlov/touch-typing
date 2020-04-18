@@ -1,18 +1,17 @@
-#include "StandardInteractor.hpp"
+#include "Interactor.hpp"
 
 #include "Output.hpp"
 #include "OutputResult.hpp"
 
-
 namespace touch_typing {
 
-StandardInteractor::StandardInteractor(Output& output) noexcept
+Interactor::Interactor(Output& output) noexcept
     : m_output{output}
 {
     m_output.get().onGotInputText(m_inputText);
 }
 
-auto StandardInteractor::enterSymbol(const int enteredSymbol) -> bool
+auto Interactor::enterSymbol(const int enteredSymbol) -> bool
 {
     if (m_inputTextSize == m_position)
         return false;

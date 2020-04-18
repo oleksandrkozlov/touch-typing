@@ -1,5 +1,5 @@
 #include "Controller.hpp"
-#include "StandardInteractor.hpp"
+#include "Interactor.hpp"
 #include "StandardPresenter.hpp"
 
 #include <gtest/gtest.h>
@@ -12,7 +12,7 @@ TEST(TouchTyping, shouldEnterSymbols)
         std::make_unique<touch_typing::StandardPresenter>()};
 
     auto interactor = std::unique_ptr<touch_typing::Input>{
-        std::make_unique<touch_typing::StandardInteractor>(*presenter)};
+        std::make_unique<touch_typing::Interactor>(*presenter)};
 
     auto controller = touch_typing::Controller{*interactor};
 
