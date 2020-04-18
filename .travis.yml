@@ -1,0 +1,21 @@
+language: c++
+
+branches:
+  only:
+  - master
+
+git:
+  depth: 1
+  quiet: true
+  submodules: false
+
+services:
+  - docker
+
+before_install:
+  - docker build --tag touch_typing .
+  - docker run -d --name touch_typing -v `pwd`:/touch_typing -ti touch_typing
+
+script:
+  - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -GNinja
+  - docker exec touch_typing cmake --build /touch_typing/build --parallel
