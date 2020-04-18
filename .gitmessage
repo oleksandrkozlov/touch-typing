@@ -1,0 +1,14 @@
+
+# <type>[(scope)]: <Title>
+#
+# [Description]
+#
+# [footer]
+#
+# Signed-off-by: John Doe <johndoe@company.com>
+#
+#------------------------------------------------^---------------------^
+#                                              50^                   72^
+#
+# Possible tags: fix, feat, chore, docs, style, refactor, perf, test,
+#                improv, build, ci, revert
