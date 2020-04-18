@@ -1,0 +1,5 @@
+include(google_test)
+include(CTest)
+add_executable(touch_typing_tests touch_typing_tests.cpp)
+target_link_libraries (touch_typing_tests PRIVATE gtest_main touchtyping)
+add_test(NAME touch_typing_tests COMMAND touch_typing_tests WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/tests)
