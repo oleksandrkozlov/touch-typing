@@ -19,3 +19,4 @@ before_install:
 script:
   - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -GNinja
   - docker exec touch_typing cmake --build /touch_typing/build --parallel
+  - docker exec touch_typing cmake --build /touch_typing/build --target test
