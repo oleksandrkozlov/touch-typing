@@ -2,11 +2,16 @@
 
 #include "Output.hpp"
 #include "OutputResult.hpp"
+#include "TextStorage.hpp"
 
 namespace touch_typing {
 
-Interactor::Interactor(Output& output) noexcept
-    : m_output{output}
+Interactor::Interactor(
+    const TextStorage& textStorage,
+    Output& output) noexcept
+    : m_textStorage{textStorage}
+    , m_output{output}
+    , m_inputText{m_textStorage.get().getText()}
 {
     m_output.get().onGotInputText(m_inputText);
 }
