@@ -1,11 +1,11 @@
 #ifndef TOUCH_TYPING_OUTPUT_HPP
 #define TOUCH_TYPING_OUTPUT_HPP
 
+#include "OutputResult.hpp"
+
 #include <string>
 
 namespace touch_typing {
-
-struct OutputResult;
 
 class Output {
 protected:
@@ -19,8 +19,15 @@ protected:
 public:
     virtual ~Output() = default;
 
-    virtual auto onGotInputText(const std::string& inputText) -> void = 0;
-    virtual auto onGotOutputResult(OutputResult outputResult) -> void = 0;
+    virtual auto onGotInputText([
+        [maybe_unused]] const std::string& inputText) -> void
+    {
+    }
+
+    virtual auto onGotOutputResult([
+        [maybe_unused]] OutputResult outputResult) -> void
+    {
+    }
 };
 
 } // namespace touch_typing
