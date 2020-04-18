@@ -6,7 +6,7 @@
 
 namespace touch_typing {
 
-TEST(TouchTyping, shouldEnterSymbols)
+TEST(TouchTypingTests, shouldEnterSymbols)
 {
     auto presenter = std::unique_ptr<touch_typing::Output>{
         std::make_unique<touch_typing::StandardPresenter>()};
