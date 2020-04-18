@@ -1,5 +1,5 @@
-include(google_test)
 include(CTest)
+find_package(GTest REQUIRED)
 add_executable(touch_typing_tests TouchTypingTests.cpp)
-target_link_libraries (touch_typing_tests PRIVATE gtest_main touchtyping)
+target_link_libraries (touch_typing_tests PRIVATE GTest::Main touchtyping)
 add_test(NAME touch_typing_tests COMMAND touch_typing_tests WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/tests)

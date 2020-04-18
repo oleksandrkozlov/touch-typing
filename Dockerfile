@@ -11,4 +11,5 @@ RUN apt-get update && apt-get install -y \
     clang-tidy \
     ninja-build \
     cmake \
-    cppcheck
+    cppcheck \
+    libgtest-dev
