@@ -13,6 +13,9 @@ add_compile_options(-Wall -Wextra -Wshadow -Wpedantic)
 
 enable_testing ()
 
+include(cppcheck)
+include(clang-tidy)
+
 add_subdirectory(src)
 add_subdirectory(tests)
 
