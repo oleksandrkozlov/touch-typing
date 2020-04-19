@@ -1,3 +1,4 @@
 # touch_typing
 
 [![Build Status](https://travis-ci.com/oleksandrkozlov/touch_typing.svg?branch=master)](https://travis-ci.com/oleksandrkozlov/touch_typing)
+[![Coverage Status](https://codecov.io/gh/oleksandrkozlov/touch_typing/branch/master/graph/badge.svg)](https://codecov.io/gh/oleksandrkozlov/touch_typing)
