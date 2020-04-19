@@ -19,10 +19,10 @@ public:
     auto operator=(const CursesPresenter& other)
         -> CursesPresenter& = delete;
 
-    ~CursesPresenter() noexcept;
+    ~CursesPresenter() noexcept override;
 
 private:
-    auto onGotInputText(std::string inputText) -> void override;
+    auto onGotInputText(const std::string& inputText) -> void override;
     auto onGotOutputResult(OutputResult result) -> void override;
 
     std::deque<OutputResult> m_enteredText;
