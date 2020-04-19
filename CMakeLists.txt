@@ -11,14 +11,14 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_compile_options(-Wall -Wextra -Wshadow -Wpedantic)
 
-enable_testing ()
+enable_testing()
 
 include(cppcheck)
 include(clang-tidy)
 include(clang-format)
+include(cmake-format)
 include(kcov)
 include(iwyu)
 
 add_subdirectory(src)
 add_subdirectory(tests)
-

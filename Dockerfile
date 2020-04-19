@@ -21,7 +21,11 @@ RUN apt-get update && apt-get install -y \
     libiberty-dev \
     python3 \
     # codecov
-    curl
+    curl \
+    # cmake-format
+    python3-pip
+
+RUN pip3 install cmake-format
 
 RUN git clone --depth=1 https://github.com/SimonKagstrom/kcov.git kcov \
     && cmake -Hkcov -Bkcov/build -GNinja -DCMAKE_BUILD_TYPE=Release \
