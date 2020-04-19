@@ -6,6 +6,7 @@
 
 namespace touch_typing {
 
+// cppcheck-suppress constParameter
 Controller::Controller(Input& input) noexcept
     : m_input{input}
 {
