@@ -14,9 +14,14 @@ services:
 
 before_install:
   - docker build --tag touch_typing .
-  - docker run -d --name touch_typing -v `pwd`:/touch_typing -ti touch_typing
+  - docker run -d --name touch_typing --security-opt seccomp=unconfined -v `pwd`:/touch_typing --env GTEST_OUTPUT=xml -ti touch_typing
 
 script:
-  - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -GNinja
+  - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -DCMAKE_BUILD_TYPE=Debug -GNinja
   - docker exec touch_typing cmake --build /touch_typing/build --parallel
   - docker exec touch_typing cmake --build /touch_typing/build --target test
+  - docker exec touch_typing cmake --build /touch_typing/build --target coverage
+  - ci_env=`bash <(curl -s https://codecov.io/env)`
+  - docker exec $ci_env touch_typing /bin/bash -c "bash <(curl -s https://codecov.io/bash) -s /touch_typing/build/coverage"
+
+after_success:
