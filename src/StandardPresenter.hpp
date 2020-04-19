@@ -11,7 +11,7 @@ struct OutputResult;
 
 class StandardPresenter : public Output {
 private:
-    auto onGotInputText(std::string inputText) -> void override;
+    auto onGotInputText(const std::string& inputText) -> void override;
     auto onGotOutputResult(OutputResult result) -> void override;
 };
 

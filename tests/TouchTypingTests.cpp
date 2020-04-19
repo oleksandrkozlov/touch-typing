@@ -12,8 +12,14 @@
 namespace touch_typing {
 
 class TouchTypingTests : public testing::Test, public Output {
+public:
+    auto getInteractor() noexcept -> touch_typing::Input&
+    {
+        return *m_interactor;
+    }
+
 private:
-    auto onGotInputText(std::string inputText) -> void override
+    auto onGotInputText(const std::string& inputText) -> void override
     {
         ASSERT_EQ(m_inputText, inputText);
     }
@@ -23,30 +29,27 @@ private:
         ASSERT_EQ(outputResult.answer, OutputResult::Answer::Correct);
     }
 
-private:
     std::string m_inputText{"Hello, World!"};
     TextStorage m_textStorage{TextStorage::Texts{m_inputText}};
-
-protected:
     std::unique_ptr<touch_typing::Input> m_interactor{
         std::make_unique<touch_typing::Interactor>(m_textStorage, *this)};
 };
 
-TEST_F(TouchTypingTests, shouldEnterAllSymbolsCorrectly)
+TEST_F(TouchTypingTests, shouldEnterAllSymbolsCorrectly) // NOLINT
 {
-    m_interactor->enterSymbol('H');
-    m_interactor->enterSymbol('e');
-    m_interactor->enterSymbol('l');
-    m_interactor->enterSymbol('l');
-    m_interactor->enterSymbol('o');
-    m_interactor->enterSymbol(',');
-    m_interactor->enterSymbol(' ');
-    m_interactor->enterSymbol('W');
-    m_interactor->enterSymbol('o');
-    m_interactor->enterSymbol('r');
-    m_interactor->enterSymbol('l');
-    m_interactor->enterSymbol('d');
-    m_interactor->enterSymbol('!');
+    getInteractor().enterSymbol('H');
+    getInteractor().enterSymbol('e');
+    getInteractor().enterSymbol('l');
+    getInteractor().enterSymbol('l');
+    getInteractor().enterSymbol('o');
+    getInteractor().enterSymbol(',');
+    getInteractor().enterSymbol(' ');
+    getInteractor().enterSymbol('W');
+    getInteractor().enterSymbol('o');
+    getInteractor().enterSymbol('r');
+    getInteractor().enterSymbol('l');
+    getInteractor().enterSymbol('d');
+    getInteractor().enterSymbol('!');
 }
 
 } // namespace touch_typing
