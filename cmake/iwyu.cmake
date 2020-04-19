@@ -12,9 +12,9 @@ find_package(
     REQUIRED
 )
 
-find_program(IWYU_TOOL_PATH iwyu_tool.py)
+find_program(IWYU_TOOL_PROGRAM iwyu_tool.py)
 
-if(NOT IWYU_TOOL_PATH)
+if(NOT IWYU_TOOL_PROGRAM)
     message(FATAL_ERROR "No program 'iwyu_tool.py' found")
 endif()
 
@@ -22,7 +22,7 @@ endif()
 add_custom_target(
     iwyu
     COMMAND
-        ${Python3_EXECUTABLE} ${IWYU_TOOL_PATH} -p ${CMAKE_BINARY_DIR}
+        ${Python3_EXECUTABLE} ${IWYU_TOOL_PROGRAM} -p ${CMAKE_BINARY_DIR}
         -j `nproc` -- -Xiwyu --mapping_file=${CMAKE_SOURCE_DIR}/.iwyu >
         ${CMAKE_BINARY_DIR}/iwyu.txt
     COMMENT "Analyzing code by 'iwyu'"
