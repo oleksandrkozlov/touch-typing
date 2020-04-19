@@ -20,7 +20,7 @@ script:
   - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -DCMAKE_BUILD_TYPE=Debug -GNinja
   - docker exec touch_typing cmake --build /touch_typing/build --parallel
   - docker exec touch_typing cmake --build /touch_typing/build --target test
-  - docker exec touch_typing cmake --build /touch_typing/build --target coverage
+  - docker exec touch_typing cmake --build /touch_typing/build --target kcov
   - docker exec touch_typing cmake --build /touch_typing/build --target cppcheck
   - docker exec touch_typing cmake --build /touch_typing/build --target clang-tidy
   - docker exec touch_typing cmake --build /touch_typing/build --target clang-format

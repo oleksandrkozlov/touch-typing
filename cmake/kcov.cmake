@@ -11,5 +11,5 @@ function(add_coverage)
         COMMAND ${KCOV_PROGRAM} --include-pattern=/src
                 ${CMAKE_BINARY_DIR}/${COVERAGE_NAME} ${COVERAGE_EXECUTABLE}
         DEPENDS ${COVERAGE_EXECUTABLE}
-        COMMENT "Collecting code coverage from ${TEST_EXECUTABLE}")
+        COMMENT "Collecting code coverage by 'kcov'")
 endfunction()

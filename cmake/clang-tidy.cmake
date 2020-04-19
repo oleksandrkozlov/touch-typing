@@ -4,6 +4,10 @@ if(NOT CLANG_TIDY_PROGRAM)
     message(FATAL_ERROR "No program 'clang-tidy' found")
 endif()
 
+if(RUN_CLANG_TIDY_ON_BUILD)
+    set(CMAKE_CXX_CLANG_TIDY ${CLANG_TIDY_PROGRAM})
+endif()
+
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
 find_program(RUN_CLANG_TIDY_PROGRAM run-clang-tidy.py
@@ -15,8 +19,8 @@ endif()
 
 add_custom_target(
     clang-tidy
-    COMMAND
-        ${Python3_EXECUTABLE} ${RUN_CLANG_TIDY_PROGRAM} -quiet
-        -header-filter=.* -p ${CMAKE_BINARY_DIR} -j `nproc` >
-        ${CMAKE_BINARY_DIR}/clang-tidy.txt
+    COMMAND ${Python3_EXECUTABLE} ${RUN_CLANG_TIDY_PROGRAM} -quiet
+            -header-filter=.* -p . -j `nproc` | tee clang-tidy.txt
+    COMMAND ! grep warning clang-tidy.txt > /dev/null 2>&1
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
     COMMENT "Analyzing code by 'clang-tidy'")

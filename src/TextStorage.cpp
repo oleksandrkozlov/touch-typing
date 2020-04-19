@@ -5,6 +5,7 @@
 
 namespace touch_typing {
 
+// cppcheck-suppress passedByValue
 TextStorage::TextStorage(Texts texts) noexcept
     : m_texts{std::move(texts)}
 {
