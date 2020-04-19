@@ -11,8 +11,8 @@ auto StandardPresenter::onGotInputText(const std::string& inputText) -> void
     std::cout << "Input: " << inputText << std::endl;
 }
 
-auto StandardPresenter::onGotOutputResult(
-    const OutputResult outputResult) -> void
+auto StandardPresenter::onGotOutputResult(const OutputResult outputResult)
+    -> void
 {
     std::cout << "'" << static_cast<char>(outputResult.enteredSymbol) << "'"
               << std::endl;
