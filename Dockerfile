@@ -12,4 +12,17 @@ RUN apt-get update && apt-get install -y \
     ninja-build \
     cmake \
     cppcheck \
-    libgtest-dev
+    libgtest-dev \
+    # kcov
+    binutils-dev \
+    libcurl4-openssl-dev \
+    zlib1g-dev \
+    libdw-dev \
+    libiberty-dev \
+    python3 \
+    # codecov
+    curl
+
+RUN git clone --depth=1 https://github.com/SimonKagstrom/kcov.git kcov \
+    && cmake -Hkcov -Bkcov/build -GNinja -DCMAKE_BUILD_TYPE=Release \
+    && cmake --build kcov/build --target install --parallel

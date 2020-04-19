@@ -15,6 +15,7 @@ enable_testing ()
 
 include(cppcheck)
 include(clang-tidy)
+include(kcov)
 
 add_subdirectory(src)
 add_subdirectory(tests)
