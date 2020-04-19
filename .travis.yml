@@ -13,8 +13,12 @@ services:
   - docker
 
 before_install:
+  - bundle install
   - docker build --tag touch_typing .
   - docker run -d --name touch_typing --security-opt seccomp=unconfined -v `pwd`:/touch_typing --env GTEST_OUTPUT=xml -ti touch_typing
+
+before_script:
+  - bundle exec danger
 
 script:
   - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -DCMAKE_BUILD_TYPE=Debug -GNinja
