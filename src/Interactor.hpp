@@ -3,7 +3,9 @@
 
 #include "Input.hpp"
 
+#include <cstddef>
 #include <functional>
+#include <iterator>
 #include <string>
 
 namespace touch_typing {

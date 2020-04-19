@@ -26,3 +26,8 @@ RUN apt-get update && apt-get install -y \
 RUN git clone --depth=1 https://github.com/SimonKagstrom/kcov.git kcov \
     && cmake -Hkcov -Bkcov/build -GNinja -DCMAKE_BUILD_TYPE=Release \
     && cmake --build kcov/build --target install --parallel
+
+RUN git clone --depth=1 --branch clang_10 \
+    https://github.com/include-what-you-use/include-what-you-use.git iwyu \
+    && cmake -Hiwyu -Biwyu/build -GNinja -DCMAKE_BUILD_TYPE=Release \
+    && cmake --build iwyu/build --target install --parallel

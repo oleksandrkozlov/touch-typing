@@ -1,8 +1,9 @@
 #include "CursesPresenter.hpp"
 
-#include <ncurses.h>
+#include <curses.h>
 
-#include <algorithm>
+#include <iterator>
+#include <utility>
 
 namespace touch_typing {
 namespace {

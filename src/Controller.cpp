@@ -1,6 +1,8 @@
 #include "Controller.hpp"
 
-#include <ncurses.h>
+#include "Input.hpp"
+
+#include <curses.h>
 
 namespace touch_typing {
 

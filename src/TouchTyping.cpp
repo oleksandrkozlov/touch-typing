@@ -1,9 +1,12 @@
 #include "Controller.hpp"
 #include "CursesPresenter.hpp"
+#include "Input.hpp"
 #include "Interactor.hpp"
+#include "Output.hpp"
 #include "TextStorage.hpp"
 
 #include <memory>
+#include <utility>
 
 int main()
 {
