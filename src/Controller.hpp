@@ -1,11 +1,11 @@
 #ifndef TOUCH_TYPING_CONTROLLER_HPP
 #define TOUCH_TYPING_CONTROLLER_HPP
 
-#include "Input.hpp"
-
 #include <functional>
 
 namespace touch_typing {
+
+class Input;
 
 class Controller {
 public:

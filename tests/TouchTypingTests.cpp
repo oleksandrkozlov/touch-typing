@@ -1,9 +1,13 @@
-#include "Controller.hpp"
+#include "Input.hpp"
 #include "Interactor.hpp"
-#include "StandardPresenter.hpp"
+#include "Output.hpp"
+#include "OutputResult.hpp"
 #include "TextStorage.hpp"
 
 #include <gtest/gtest.h>
+
+#include <memory>
+#include <string>
 
 namespace touch_typing {
 

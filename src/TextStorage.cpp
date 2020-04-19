@@ -1,5 +1,8 @@
 #include "TextStorage.hpp"
 
+#include <iterator>
+#include <utility>
+
 namespace touch_typing {
 
 TextStorage::TextStorage(Texts texts) noexcept

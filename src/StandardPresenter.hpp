@@ -3,7 +3,11 @@
 
 #include "Output.hpp"
 
+#include <string>
+
 namespace touch_typing {
+
+struct OutputResult;
 
 class StandardPresenter : public Output {
 private:
