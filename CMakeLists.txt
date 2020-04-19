@@ -15,6 +15,7 @@ enable_testing ()
 
 include(cppcheck)
 include(clang-tidy)
+include(clang-format)
 include(kcov)
 include(iwyu)
 

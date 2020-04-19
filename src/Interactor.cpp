@@ -42,6 +42,6 @@ auto Interactor::enterSymbol(const int enteredSymbol) -> bool
         OutputResult{expectedSymbol, enteredSymbol, answer});
 
     return m_inputTextSize != m_position;
-    }
+}
 
 } // namespace touch_typing
