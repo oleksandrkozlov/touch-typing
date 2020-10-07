@@ -18,8 +18,8 @@ services:
 before_install:
   - bundle install
   - bundle exec danger
-  - npm install --global @commitlint/cli
-  - npm install --global @commitlint/travis-cli
+  - npm install --global @commitlint/cli@8.3.5
+  - npm install --global @commitlint/travis-cli@8.3.5
   - commitlint-travis
 
 install:
