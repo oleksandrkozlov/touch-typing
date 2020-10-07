@@ -27,7 +27,8 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip3 install cmake-format
 
-RUN git clone --depth=1 https://github.com/SimonKagstrom/kcov.git kcov \
+RUN git clone --depth=1 --branch v37 \
+    https://github.com/SimonKagstrom/kcov.git kcov \
     && cmake -Hkcov -Bkcov/build -GNinja -DCMAKE_BUILD_TYPE=Release \
     && cmake --build kcov/build --target install --parallel
 
