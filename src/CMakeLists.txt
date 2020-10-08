@@ -1,6 +1,7 @@
 add_library(
-    touchtyping STATIC StandardPresenter.cpp Interactor.cpp Controller.cpp
-                       TextStorage.cpp CursesPresenter.cpp)
+    touchtyping STATIC StandardPresenter.cpp Interactor.cpp Controller.cpp TextStorage.cpp
+                       CursesPresenter.cpp
+)
 
 add_executable(touch_typing TouchTyping.cpp)
 
