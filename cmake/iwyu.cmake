@@ -21,7 +21,21 @@ add_custom_target(
     iwyu
     COMMAND
         ${Python3_EXECUTABLE} ${IWYU_TOOL_PROGRAM} -o clang -p . -j `nproc`
-        -- -Xiwyu --mapping_file=${CMAKE_SOURCE_DIR}/.iwyu | tee iwyu.txt
+        -- -Xiwyu --mapping_file=${PROJECT_SOURCE_DIR}/.iwyu | tee iwyu.txt
     COMMAND ! grep error: iwyu.txt > /dev/null 2>&1
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
     COMMENT "Analyzing code by 'iwyu'")
+
+find_program(FIX_INCLUDES_PROGRAM fix_includes.py)
+
+if(NOT FIX_INCLUDES_PROGRAM)
+    message(FATAL_ERROR "No program 'fix_includes.py' found")
+endif()
+
+add_custom_target(
+    fix-includes
+    COMMAND ${Python3_EXECUTABLE} ${IWYU_TOOL_PROGRAM} -p . -j `nproc` --
+            -Xiwyu --mapping_file=${PROJECT_SOURCE_DIR}/.iwyu | tee iwyu.txt
+    COMMAND ${Python3_EXECUTABLE} ${FIX_INCLUDES_PROGRAM} < iwyu.txt
+    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+    COMMENT "Fixing includes using 'iwyu'")
