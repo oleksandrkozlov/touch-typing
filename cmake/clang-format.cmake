@@ -15,3 +15,8 @@ add_custom_target(
         bash -c
         "${FIND_SOURCES} | xargs -n 1 -I {} bash -c 'diff -u {} <(${CLANG_FORMAT_PROGRAM} {})'"
     COMMENT "Checking code formatting by 'clang-format'")
+
+add_custom_target(
+    format-cpp VERBATIM
+    COMMAND bash -c
+            "${FIND_SOURCES} | xargs -n 1 ${CLANG_FORMAT_PROGRAM} -i")
