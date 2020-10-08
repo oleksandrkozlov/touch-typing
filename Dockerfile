@@ -13,6 +13,9 @@ RUN apt-get update && apt-get install -y \
     cmake \
     cppcheck \
     libgtest-dev \
+    # docs
+    graphviz \
+    doxygen \
     # kcov
     binutils-dev \
     libcurl4-openssl-dev \
@@ -25,7 +28,11 @@ RUN apt-get update && apt-get install -y \
     # cmake-format
     python3-pip
 
-RUN pip3 install cmake-format
+RUN pip3 install \
+    cmake-format \
+    sphinx \
+    sphinx_rtd_theme \
+    breathe
 
 RUN git clone --depth=1 --branch v37 \
     https://github.com/SimonKagstrom/kcov.git kcov \

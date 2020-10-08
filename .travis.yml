@@ -38,6 +38,7 @@ script:
   - docker exec touch_typing cmake --build /touch_typing/build --target clang-format
   - docker exec touch_typing cmake --build /touch_typing/build --target cmake-format
   - docker exec touch_typing cmake --build /touch_typing/build --target iwyu
+  - docker exec touch_typing cmake --build /touch_typing/build --target docs
 
 after_script:
   - ci_env=`bash <(curl -s https://codecov.io/env)`

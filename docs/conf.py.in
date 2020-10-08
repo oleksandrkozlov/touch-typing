@@ -1,0 +1,8 @@
+project = "Touch Typing"
+copyright = "MIT License, Copyright (c) 2020 Oleksandr Kozlov"
+author = "Oleksandr Kozlov"
+release = "v@PROJECT_VERSION@"
+html_theme = 'sphinx_rtd_theme'
+extensions = [ "breathe" ]
+breathe_default_project = "Touch Typing"
+breathe_projects = { "Touch Typing" : "@CMAKE_CURRENT_BINARY_DIR@/doxygen/xml" }
