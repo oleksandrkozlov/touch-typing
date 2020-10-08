@@ -11,12 +11,11 @@ set(FIND_SOURCES
 add_custom_target(
     cmake-format
     VERBATIM
-    COMMAND
-        bash -c
-        "${FIND_SOURCES} | xargs -n 1 -I {} bash -c 'diff -u {} <(${CMAKE_FORMAT_PROGRAM} {})'"
-    COMMENT "Checking code formatting by 'cmake-format'")
+    COMMAND bash -c
+            "${FIND_SOURCES} | xargs -n 1 -I {} bash -c 'diff -u {} <(${CMAKE_FORMAT_PROGRAM} {})'"
+    COMMENT "Checking code formatting by 'cmake-format'"
+)
 
 add_custom_target(
-    format-cmake VERBATIM
-    COMMAND bash -c
-            "${FIND_SOURCES} | xargs -n 1 ${CMAKE_FORMAT_PROGRAM} -i")
+    format-cmake VERBATIM COMMAND bash -c "${FIND_SOURCES} | xargs -n 1 ${CMAKE_FORMAT_PROGRAM} -i"
+)
