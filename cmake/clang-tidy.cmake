@@ -8,7 +8,7 @@ if(RUN_CLANG_TIDY_ON_BUILD)
     set(CMAKE_CXX_CLANG_TIDY ${CLANG_TIDY_PROGRAM})
 endif()
 
-find_package(Python3 COMPONENTS Interpreter REQUIRED)
+find_package(Python3 3.8 COMPONENTS Interpreter REQUIRED)
 
 find_program(
     RUN_CLANG_TIDY_PROGRAM run-clang-tidy.py HINTS /usr/share/clang /usr/lib/*/share/clang/
