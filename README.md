@@ -52,19 +52,33 @@ touch_typing
 * [Breathe](https://breathe.readthedocs.io) >= 4.22
 * [Clang-Tidy](https://releases.llvm.org/10.0.0/tools/clang/tools/extra/docs/clang-tidy/) >= 10.0
 * [ClangFormat](https://releases.llvm.org/10.0.0/tools/clang/docs/ClangFormat.html) >= 10.0
+* [Conventional Commits](https://www.conventionalcommits.org) >= 1.0
 * [Cppcheck](http://cppcheck.sourceforge.net) >= 1.90
 * [Doxygen](https://www.doxygen.nl) >= 1.8
 * [Google Test](https://github.com/google/googletest) >= 1.10
 * [Graphviz](https://graphviz.org) >= 2.42
+* [Kcov](http://simonkagstrom.github.io/kcov/) >= 37.0
 * [Ninja](https://ninja-build.org) >= 1.10
 * [Python](https://www.python.org) >= 3.8
 * [Read the Docs Sphinx Theme](https://sphinx-rtd-theme.readthedocs.io) >= 0.5
 * [Sphinx](https://www.sphinx-doc.org) >= 3.2
 * [cmake language tools](https://cmake-format.readthedocs.io) >= 0.6
 * [include-what-you-use](https://include-what-you-use.org) >= 0.14
-* [Kcov](http://simonkagstrom.github.io/kcov/) >= 37.0
+
+### Continuous Integration Dependencies
+
+* [Bundler](https://bundler.io) >= 2.1
+* [Codecov](https://codecov.io)
+* [Danger](https://danger.systems/ruby) >= 8.0
+* [Docker](https://www.docker.com) > 18.6
+* [Git](https://git-scm.com) >= 2.25
+* [Node.js](https://nodejs.org) >= 8.12
+* [Read the Docs](https://readthedocs.org)
+* [Ruby](https://www.ruby-lang.org) >= 2.5
+* [commitlint](https://commitlint.js.org) >= 8.3
+* [curl](https://curl.haxx.se) >= 7.68
+* [nmp](https://www.npmjs.com) >= 6.14
 
 ### License
-[MIT License](https://github.com/oleksandrkozlov/touch_typing/blob/master/LICENSE)
 
-Copyright (c) 2020 Oleksandr Kozlov
+[MIT License](https://github.com/oleksandrkozlov/touch_typing/blob/master/LICENSE), Copyright (c) 2020 Oleksandr Kozlov
