@@ -1,3 +1,5 @@
+![Image of Yaktocat](https://repository-images.githubusercontent.com/254851395/d28f0200-0b0d-11eb-9fcc-531d0f5603c6)
+
 <a href="https://github.com/oleksandrkozlov/touch_typing">
     <img src="https://raw.githubusercontent.com/oleksandrkozlov/touch_typing/master/docs/touch-typing-logo.png" alt="Touch Typing" title="Touch Typing" align="left" height="100" />
 </a>
