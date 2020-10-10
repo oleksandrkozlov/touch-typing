@@ -13,6 +13,10 @@ Touch Typing
 
 **Touch Typing** is a pre-alpha C++ application that will help you to learn touch typing which means typing through muscle memory without using the sense of sight to find the keys.
 
+### Demo
+
+[![asciicast](https://asciinema.org/a/364545.svg)](https://asciinema.org/a/364545)
+
 ### Configure
 
 ```
