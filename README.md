@@ -1,3 +1,5 @@
+![Touch Typing](https://repository-images.githubusercontent.com/254851395/15050e80-0b0f-11eb-946c-fcf11540dae4)
+
 <a href="https://github.com/oleksandrkozlov/touch_typing">
     <img src="https://raw.githubusercontent.com/oleksandrkozlov/touch_typing/master/docs/touch-typing-logo.png" alt="Touch Typing" title="Touch Typing" align="left" height="100" />
 </a>
