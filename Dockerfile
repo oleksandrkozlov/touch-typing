@@ -13,6 +13,8 @@ RUN apt-get update && apt-get install -y \
     cmake \
     cppcheck \
     libgtest-dev \
+    pkg-config \
+    python3 \
     # docs
     graphviz \
     doxygen \
@@ -22,14 +24,13 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     libdw-dev \
     libiberty-dev \
-    python3 \
     # codecov
     curl \
     # cmake-format
     python3-pip
 
 RUN pip3 install \
-    cmake-format \
+    cmakelang \
     sphinx \
     sphinx_rtd_theme \
     breathe

@@ -1,5 +1,5 @@
 include(CTest)
-find_package(GTest REQUIRED)
+find_package(GTest 1.10 REQUIRED)
 add_executable(touch_typing_tests TouchTypingTests.cpp)
 target_link_libraries(touch_typing_tests PRIVATE GTest::Main touchtyping)
 

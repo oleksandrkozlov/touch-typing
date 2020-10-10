@@ -10,7 +10,7 @@ if(RUN_IWYU_ON_BUILD)
     )
 endif()
 
-find_package(Python3 COMPONENTS Interpreter REQUIRED)
+find_package(Python3 3.8 COMPONENTS Interpreter REQUIRED)
 
 find_program(IWYU_TOOL_PROGRAM iwyu_tool.py)
 
