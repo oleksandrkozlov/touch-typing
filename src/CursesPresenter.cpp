@@ -52,7 +52,9 @@ auto CursesPresenter::onGotOutputResult(OutputResult outputResult) -> void
         auto color = (result.answer == OutputResult::Answer::Correct)
             ? CorrectColor
             : WrongColor;
-        addch(result.enteredSymbol | COLOR_PAIR(color));
+        addch(
+            static_cast<std::uint32_t>(result.enteredSymbol) |
+            COLOR_PAIR(color));
     }
 
     printw("%s", m_inputText.substr(std::size(m_enteredText)).c_str());
