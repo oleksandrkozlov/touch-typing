@@ -53,6 +53,7 @@ touch_typing
 * [Ncurses](https://invisible-island.net/ncurses/) >= 6.2
 * [docopt.cpp](https://github.com/docopt/docopt.cpp) >= 0.6
 * [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/) >= 0.29
+* [spdlog](https://github.com/gabime/spdlog) >= 1.5
 * [{fmt}](https://fmt.dev/) >= 6.1
 
 ### Development Dependencies

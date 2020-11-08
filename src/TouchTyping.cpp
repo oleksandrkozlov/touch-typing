@@ -8,7 +8,9 @@
 
 #include <docopt/docopt.h>
 #include <docopt/docopt_value.h>
+#include <spdlog/spdlog.h>
 
+#include <exception>
 #include <filesystem>
 #include <iterator>
 #include <map>
@@ -31,6 +33,8 @@ Options:
 auto main(int argc, char** argv) -> int
 {
     try {
+        spdlog::info("Welcome to Touch Typing!");
+
         const auto arguments =
             docopt::docopt(usage, {std::next(argv), std::next(argv, argc)});
 
@@ -57,7 +61,8 @@ auto main(int argc, char** argv) -> int
         controller.readSymbols();
 
         return 0;
-    } catch (...) {
+    } catch (const std::exception& error) {
+        spdlog::error(error.what());
         return 1;
     }
 }
