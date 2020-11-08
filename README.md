@@ -88,6 +88,14 @@ touch_typing
 * [curl](https://curl.haxx.se) >= 7.68
 * [nmp](https://www.npmjs.com) >= 6.14
 
+### Roadmap
+
+- [ ] Integrate [Ccache](https://ccache.dev).
+- [ ] Integrate [Conan](https://conan.io/).
+- [ ] Integrate sanitizers (memory, address, etc.).
+- [ ] Add GUI.
+- [ ] Switch to C++20 (e.g, modules).
+
 ### License
 
 [MIT License](https://github.com/oleksandrkozlov/touch_typing/blob/master/LICENSE), Copyright (c) 2020 Oleksandr Kozlov
