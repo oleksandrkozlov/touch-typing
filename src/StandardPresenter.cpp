@@ -2,28 +2,27 @@
 
 #include "OutputResult.hpp"
 
-#include <iostream>
+#include <fmt/core.h>
 
 namespace touch_typing {
 
 auto StandardPresenter::onGotInputText(const std::string& inputText) -> void
 {
-    std::cout << "Input: " << inputText << std::endl;
+    fmt::print("Input: {}\n", inputText);
 }
 
 auto StandardPresenter::onGotOutputResult(const OutputResult outputResult)
     -> void
 {
-    std::cout << "'" << static_cast<char>(outputResult.enteredSymbol) << "'"
-              << std::endl;
+    fmt::print("'{}'\n", static_cast<char>(outputResult.enteredSymbol));
     switch (outputResult.answer) {
         case OutputResult::Answer::Correct:
             break;
         case OutputResult::Answer::Wrong:
         case OutputResult::Answer::Backspace:
-            std::cout << "try again: '"
-                      << static_cast<char>(outputResult.expectedSymbol)
-                      << "'" << std::endl;
+            fmt::print(
+                "try again: '{}'\n",
+                static_cast<char>(outputResult.expectedSymbol));
             break;
     }
 }
