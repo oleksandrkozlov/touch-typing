@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     libgtest-dev \
     pkg-config \
     python3 \
+    libdocopt-dev \
     # docs
     graphviz \
     doxygen \

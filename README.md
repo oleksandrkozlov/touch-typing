@@ -69,6 +69,7 @@ touch_typing
 * [Read the Docs Sphinx Theme](https://sphinx-rtd-theme.readthedocs.io) >= 0.5
 * [Sphinx](https://www.sphinx-doc.org) >= 3.2
 * [cmake language tools](https://cmake-format.readthedocs.io) >= 0.6
+* [docopt.cpp](https://github.com/docopt/docopt.cpp) >= 0.6
 * [include-what-you-use](https://include-what-you-use.org) >= 0.14
 
 ### Continuous Integration Dependencies
