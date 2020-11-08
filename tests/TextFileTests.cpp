@@ -1,5 +1,6 @@
 #include "TextFile.hpp"
 
+#include <fmt/core.h>
 #include <gtest/gtest.h>
 #include <unistd.h>
 
@@ -51,8 +52,9 @@ TEST(TextFileTests, shouldReadTextFile) // NOLINT
 
 TempFile::TempFile()
 {
-    auto templet = std::filesystem::temp_directory_path().string() +
-        "/touch_typing_XXXXXX";
+    auto templet = fmt::format(
+        "{}/touch_typing_XXXXXX",
+        std::filesystem::temp_directory_path().string());
 
     m_fileDescriptor = mkstemp(templet.data());
     const auto errorCode = -1;

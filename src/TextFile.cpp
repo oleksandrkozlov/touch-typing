@@ -1,5 +1,7 @@
 #include "TextFile.hpp"
 
+#include <fmt/core.h>
+
 #include <fstream>
 #include <iterator>
 #include <stdexcept>
@@ -10,8 +12,10 @@ TextFile::TextFile(const std::filesystem::path& filename)
 {
     auto fileStream = std::ifstream{filename};
 
-    if (!fileStream.is_open())
-        throw std::invalid_argument{"Cannot open " + filename.string()};
+    if (!fileStream.is_open()) {
+        throw std::invalid_argument{
+            fmt::format("Cannot open '{}'.", filename.string())};
+    }
 
     m_text = std::string{
         (std::istreambuf_iterator<char>(fileStream)),
