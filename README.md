@@ -50,6 +50,7 @@ touch_typing
 ### Dependencies
 
 * [CMake](https://cmake.org) >= 3.16
+* [GSL](https://github.com/microsoft/GSL) >= 3.1
 * [Ncurses](https://invisible-island.net/ncurses/) >= 6.2
 * [docopt.cpp](https://github.com/docopt/docopt.cpp) >= 0.6
 * [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/) >= 0.29
