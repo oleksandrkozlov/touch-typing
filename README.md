@@ -51,6 +51,7 @@ touch_typing
 
 * [CMake](https://cmake.org) >= 3.16
 * [Ncurses](https://invisible-island.net/ncurses/) >= 6.2
+* [docopt.cpp](https://github.com/docopt/docopt.cpp) >= 0.6
 * [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/) >= 0.29
 * [{fmt}](https://fmt.dev/) >= 6.1
 
@@ -64,14 +65,13 @@ touch_typing
 * [Doxygen](https://www.doxygen.nl) >= 1.8
 * [Google Test](https://github.com/google/googletest) >= 1.10
 * [Graphviz](https://graphviz.org) >= 2.42
-* [Kcov](http://simonkagstrom.github.io/kcov/) >= 37.0
+* [Kcov](http://simonkagstrom.github.io/kcov/) >= 38.0
 * [Ninja](https://ninja-build.org) >= 1.10
 * [Python](https://www.python.org) >= 3.8
 * [Read the Docs Sphinx Theme](https://sphinx-rtd-theme.readthedocs.io) >= 0.5
 * [Sphinx](https://www.sphinx-doc.org) >= 3.2
 * [cmake language tools](https://cmake-format.readthedocs.io) >= 0.6
-* [docopt.cpp](https://github.com/docopt/docopt.cpp) >= 0.6
-* [include-what-you-use](https://include-what-you-use.org) >= 0.14
+* [include-what-you-use](https://include-what-you-use.org) >= 0.13
 
 ### Continuous Integration Dependencies
 
