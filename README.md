@@ -52,6 +52,7 @@ touch_typing
 * [CMake](https://cmake.org) >= 3.16
 * [Ncurses](https://invisible-island.net/ncurses/) >= 6.2
 * [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/) >= 0.29
+* [{fmt}](https://fmt.dev/) >= 6.1
 
 ### Development Dependencies
 
