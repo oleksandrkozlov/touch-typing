@@ -1,0 +1,1 @@
+install(FILES 0001-text.txt DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/touch_typing)
