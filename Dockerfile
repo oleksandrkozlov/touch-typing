@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     libdocopt-dev \
     libfmt-dev \
     libgtest-dev \
+    libspdlog-dev \
     ninja-build \
     pkg-config \
     python3 \
