@@ -72,6 +72,7 @@ touch_typing
 * [Python](https://www.python.org) >= 3.8
 * [Read the Docs Sphinx Theme](https://sphinx-rtd-theme.readthedocs.io) >= 0.5
 * [Sphinx](https://www.sphinx-doc.org) >= 3.2
+* [ccache](https://ccache.dev) >= 3.7
 * [cmake language tools](https://cmake-format.readthedocs.io) >= 0.6
 * [include-what-you-use](https://include-what-you-use.org) >= 0.13
 
@@ -91,7 +92,6 @@ touch_typing
 
 ### Roadmap
 
-- [ ] Integrate [Ccache](https://ccache.dev).
 - [ ] Integrate [Conan](https://conan.io/).
 - [ ] Integrate sanitizers (memory, address, etc.).
 - [ ] Add GUI.

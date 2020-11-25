@@ -14,6 +14,7 @@ include(packages)
 include(GNUInstallDirs)
 
 if(CMAKE_BUILD_TYPE STREQUAL Debug)
+    include(ccache)
     include(cmake-format)
     include(clang-format)
     include(clang-tidy)
