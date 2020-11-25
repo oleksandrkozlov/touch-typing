@@ -93,7 +93,6 @@ touch_typing
 ### Roadmap
 
 - [ ] Integrate [Conan](https://conan.io/).
-- [ ] Integrate sanitizers (memory, address, etc.).
 - [ ] Add GUI.
 - [ ] Switch to C++20 (e.g, modules).
 

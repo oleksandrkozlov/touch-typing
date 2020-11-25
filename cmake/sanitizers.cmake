@@ -1,0 +1,25 @@
+if((ENABLE_DEFAULT_SANITIZERS AND (ENABLE_THREAD_SANITIZER OR ENABLE_MEMORY_SANITIZER))
+   OR (ENABLE_THREAD_SANITIZER AND (ENABLE_DEFAULT_SANITIZERS OR ENABLE_MEMORY_SANITIZER))
+   OR (ENABLE_MEMORY_SANITIZER AND (ENABLE_DEFAULT_SANITIZERS OR ENABLE_THREAD_SANITIZER))
+)
+    message(FATAL_ERROR "Default, thread, and memory sanitizers are incompatible.")
+endif()
+
+if(ENABLE_MEMORY_SANITIZER AND NOT CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
+    message(FATAL_ERROR "The memory sanitizer is only available in Clang.")
+endif()
+
+if(ENABLE_DEFAULT_SANITIZERS)
+    add_compile_options(-fsanitize=undefined,leak,address)
+    link_libraries(-fsanitize=undefined,leak,address)
+endif()
+
+if(ENABLE_THREAD_SANITIZER)
+    add_compile_options(-fsanitize=thread)
+    link_libraries(-fsanitize=thread)
+endif()
+
+if(ENABLE_MEMORY_SANITIZER)
+    add_compile_options(-fsanitize=memory)
+    link_libraries(-fsanitize=memory)
+endif()

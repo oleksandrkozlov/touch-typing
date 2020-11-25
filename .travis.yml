@@ -28,18 +28,40 @@ install:
 before_script:
   - docker run -d --name touch_typing --security-opt seccomp=unconfined -v `pwd`:/touch_typing --env GTEST_OUTPUT=xml -ti touch_typing
 
-script:
-  - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -DCMAKE_BUILD_TYPE=Debug -GNinja
-  - docker exec touch_typing cmake --build /touch_typing/build --parallel
-  - docker exec touch_typing cmake --build /touch_typing/build --target test
-  - docker exec touch_typing cmake --build /touch_typing/build --target kcov
-  - docker exec touch_typing cmake --build /touch_typing/build --target cppcheck
-  - docker exec touch_typing cmake --build /touch_typing/build --target clang-tidy
-  - docker exec touch_typing cmake --build /touch_typing/build --target clang-format
-  - docker exec touch_typing cmake --build /touch_typing/build --target cmake-format
-  - docker exec touch_typing cmake --build /touch_typing/build --target iwyu
-  - docker exec touch_typing cmake --build /touch_typing/build --target docs
-
-after_script:
-  - ci_env=`bash <(curl -s https://codecov.io/env)`
-  - docker exec $ci_env touch_typing /bin/bash -c "bash <(curl -s https://codecov.io/bash) -s /touch_typing/build/kcov"
+jobs:
+  include:
+    - name: Release (GCC)
+      script:
+      - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -GNinja
+      - docker exec touch_typing cmake --build /touch_typing/build --parallel
+    - name: Release (Clang)
+      before_script:
+      - docker run -d --name touch_typing --security-opt seccomp=unconfined -v `pwd`:/touch_typing --env GTEST_OUTPUT=xml --env CC=clang-9 --env CXX=clang++-9 -ti touch_typing
+      script:
+      - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -GNinja
+      - docker exec touch_typing cmake --build /touch_typing/build --parallel
+    - name: Debug
+      script:
+      - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -DCMAKE_BUILD_TYPE=Debug -GNinja
+      - docker exec touch_typing cmake --build /touch_typing/build --parallel
+      - docker exec touch_typing cmake --build /touch_typing/build --target test
+      - docker exec touch_typing cmake --build /touch_typing/build --target kcov
+      - docker exec touch_typing cmake --build /touch_typing/build --target cppcheck
+      - docker exec touch_typing cmake --build /touch_typing/build --target clang-tidy
+      - docker exec touch_typing cmake --build /touch_typing/build --target clang-format
+      - docker exec touch_typing cmake --build /touch_typing/build --target cmake-format
+      - docker exec touch_typing cmake --build /touch_typing/build --target iwyu
+      - docker exec touch_typing cmake --build /touch_typing/build --target docs
+      after_script:
+      - ci_env=`bash <(curl -s https://codecov.io/env)`
+      - docker exec $ci_env touch_typing /bin/bash -c "bash <(curl -s https://codecov.io/bash) -s /touch_typing/build/kcov"
+    - name: Default sanitizers
+      script:
+      - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -DCMAKE_BUILD_TYPE=Debug -DENABLE_DEFAULT_SANITIZERS=ON -GNinja
+      - docker exec touch_typing cmake --build /touch_typing/build --parallel
+      - docker exec touch_typing cmake --build /touch_typing/build --target test
+    - name: Thread sanitizer
+      script:
+      - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -DCMAKE_BUILD_TYPE=Debug -DENABLE_THREAD_SANITIZER=ON -GNinja
+      - docker exec touch_typing cmake --build /touch_typing/build --parallel
+      - docker exec touch_typing cmake --build /touch_typing/build --target test
