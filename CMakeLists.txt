@@ -27,3 +27,6 @@ endif()
 
 add_subdirectory(src)
 add_subdirectory(data)
+
+include(FeatureSummary)
+feature_summary(WHAT ALL)
