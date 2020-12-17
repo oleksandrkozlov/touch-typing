@@ -10,6 +10,7 @@ Touch Typing
 [![Build Status](https://travis-ci.com/oleksandrkozlov/touch_typing.svg?branch=master)](https://travis-ci.com/oleksandrkozlov/touch_typing)
 [![Coverage Status](https://codecov.io/gh/oleksandrkozlov/touch_typing/branch/master/graph/badge.svg)](https://codecov.io/gh/oleksandrkozlov/touch_typing)
 [![Documentation Status](https://readthedocs.org/projects/touch-typing/badge/?version=latest)](https://touch-typing.readthedocs.io)
+[![Coverity Status](https://scan.coverity.com/projects/22300/badge.svg)](https://scan.coverity.com/projects/oleksandrkozlov-touch_typing)
 
 **Touch Typing** is a pre-alpha C++ application that will help you to learn touch typing which means typing through muscle memory without using the sense of sight to find the keys.
 
