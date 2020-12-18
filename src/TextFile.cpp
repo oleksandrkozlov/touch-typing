@@ -1,5 +1,7 @@
 #include "TextFile.hpp"
 
+#include "Error.hpp"
+
 #include <fmt/core.h>
 
 #include <fstream>
@@ -13,7 +15,7 @@ TextFile::TextFile(const std::filesystem::path& filename)
     auto fileStream = std::ifstream{filename};
 
     if (!fileStream.is_open()) {
-        throw std::invalid_argument{
+        throw InvalidArgument{
             fmt::format("Cannot open '{}'.", filename.string())};
     }
 
