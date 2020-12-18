@@ -3,8 +3,7 @@
 
 #include <string>
 
-class User
-{
+class User {
 public:
     explicit User(std::string username) noexcept;
 
@@ -15,4 +14,3 @@ private:
 };
 
 #endif // TOUCH_TYPING_USER_HPP
-

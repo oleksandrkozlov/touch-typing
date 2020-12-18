@@ -1,9 +1,16 @@
 add_library(
-    touchtyping STATIC StandardPresenter.cpp Interactor.cpp Controller.cpp TextStorage.cpp
-                       CursesPresenter.cpp TextFile.cpp User.cpp
+    touchtyping STATIC
+    Account.cpp
+    Controller.cpp
+    CursesPresenter.cpp
+    Interactor.cpp
+    StandardPresenter.cpp
+    TextFile.cpp
+    TextStorage.cpp
+    User.cpp
 )
 
-target_link_libraries(touchtyping PRIVATE fmt::fmt PkgConfig::ncurses)
+target_link_libraries(touchtyping PRIVATE fmt::fmt PkgConfig::ncurses Boost::serialization)
 
 add_executable(touch_typing TouchTypingMain.cpp)
 

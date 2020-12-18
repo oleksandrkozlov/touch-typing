@@ -1,3 +1,6 @@
+#include "Account.hpp"
+#include "Accounts.hpp"
+#include "BinaryStorage.hpp"
 #include "Controller.hpp"
 #include "CursesPresenter.hpp"
 #include "Input.hpp"
@@ -8,15 +11,18 @@
 
 #include <docopt/docopt.h>
 #include <docopt/docopt_value.h>
+#include <spdlog/fmt/bundled/format.h>
 #include <spdlog/spdlog.h>
 
 #include <exception>
 #include <filesystem>
+#include <iostream>
 #include <iterator>
 #include <map>
 #include <memory>
 #include <string>
 #include <utility>
+#include <vector>
 
 namespace {
 
@@ -34,6 +40,27 @@ auto main(const int argc, const char** const argv) noexcept -> int
 {
     try {
         spdlog::info("Welcome to Touch Typing!");
+
+        auto accountStorage =
+            touch_typing::BinaryStorage{"account-storage.data"};
+
+        const auto accounts = accountStorage.load<touch_typing::Accounts>();
+
+        if (std::empty(accounts)) {
+            spdlog::info("Enter username:");
+            std::string username;
+            std::cin >> username;
+            const auto account = touch_typing::Account{std::move(username)};
+            accountStorage.save(touch_typing::Accounts{account});
+        } else {
+            spdlog::info("Select username:");
+            for (std::size_t i = 0; i < std::size(accounts); ++i) {
+                spdlog::info("{}) {}", i, accounts.at(i).getUsername());
+            }
+            std::size_t userId = 0;
+            std::cin >> userId;
+            spdlog::info("Welcome, {}!", accounts.at(userId).getUsername());
+        }
 
         const auto arguments =
             docopt::docopt(usage, {std::next(argv), std::next(argv, argc)});

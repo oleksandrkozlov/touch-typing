@@ -6,7 +6,6 @@
 
 #include <fstream>
 #include <iterator>
-#include <stdexcept>
 
 namespace touch_typing {
 

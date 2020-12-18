@@ -19,13 +19,13 @@ protected:
 public:
     virtual ~Output() = default;
 
-    virtual auto onGotInputText([
-        [maybe_unused]] const std::string& inputText) -> void
+    virtual auto onGotInputText(
+        [[maybe_unused]] const std::string& inputText) -> void
     {
     }
 
-    virtual auto onGotOutputResult([
-        [maybe_unused]] OutputResult outputResult) -> void
+    virtual auto onGotOutputResult(
+        [[maybe_unused]] OutputResult outputResult) -> void
     {
     }
 };

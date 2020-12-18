@@ -1,5 +1,8 @@
 #include "User.hpp"
 
+#include <utility>
+
+// cppcheck-suppress passedByValue
 User::User(std::string username) noexcept
     : m_username{std::move(username)}
 {
