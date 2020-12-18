@@ -1,9 +1,5 @@
-// SPDX-FileCopyrightText: 2020 MBition GmbH
-//
-// SPDX-License-Identifier: Closed software
-
-#ifndef TOUCH_TYPING_ERRORH_HPP
-#define TOUCH_TYPING_ERRORH_HPP
+#ifndef TOUCH_TYPING_ERROR_HPP
+#define TOUCH_TYPING_ERROR_HPP
 
 #include <stdexcept>
 
@@ -19,4 +15,4 @@ class InvalidArgument : public Error {
 
 } // namespace touch_typing
 
-#endif // TOUCH_TYPING_ERRORH_HPP
+#endif // TOUCH_TYPING_ERROR_HPP

@@ -1,6 +1,6 @@
 add_library(
     touchtyping STATIC StandardPresenter.cpp Interactor.cpp Controller.cpp TextStorage.cpp
-                       CursesPresenter.cpp TextFile.cpp
+                       CursesPresenter.cpp TextFile.cpp User.cpp
 )
 
 target_link_libraries(touchtyping PRIVATE fmt::fmt PkgConfig::ncurses)
