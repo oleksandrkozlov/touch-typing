@@ -5,7 +5,7 @@ add_library(
 
 target_link_libraries(touchtyping PRIVATE fmt::fmt PkgConfig::ncurses)
 
-add_executable(touch_typing TouchTyping.cpp)
+add_executable(touch_typing TouchTypingMain.cpp)
 
 target_link_libraries(touch_typing PRIVATE touchtyping)
 
