@@ -30,7 +30,7 @@ Options:
 
 } // namespace
 
-auto main(int argc, char** argv) -> int
+auto main(const int argc, const char** const argv) noexcept -> int
 {
     try {
         spdlog::info("Welcome to Touch Typing!");
@@ -63,6 +63,9 @@ auto main(int argc, char** argv) -> int
         return 0;
     } catch (const std::exception& error) {
         spdlog::error(error.what());
+        return 1;
+    } catch (...) {
+        spdlog::error("Unexpected error.");
         return 1;
     }
 }
