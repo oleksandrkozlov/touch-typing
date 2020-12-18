@@ -8,8 +8,8 @@
 namespace touch_typing {
 namespace {
 
-const std::int16_t CorrectColor = 1;
-const std::int16_t WrongColor = 2;
+constexpr std::int16_t correctColor = 1;
+constexpr std::int16_t wrongColor = 2;
 
 } // namespace
 
@@ -21,8 +21,8 @@ CursesPresenter::CursesPresenter() noexcept
     start_color();
     use_default_colors();
     const std::int16_t backgroundColor = -1;
-    init_pair(CorrectColor, COLOR_GREEN, backgroundColor);
-    init_pair(WrongColor, COLOR_RED, backgroundColor);
+    init_pair(correctColor, COLOR_GREEN, backgroundColor);
+    init_pair(wrongColor, COLOR_RED, backgroundColor);
 }
 
 CursesPresenter::~CursesPresenter() noexcept
@@ -50,8 +50,8 @@ auto CursesPresenter::onGotOutputResult(OutputResult outputResult) -> void
 
     for (const auto& result : m_enteredText) {
         auto color = (result.answer == OutputResult::Answer::Correct)
-            ? CorrectColor
-            : WrongColor;
+            ? correctColor
+            : wrongColor;
         addch(
             static_cast<std::uint32_t>(result.enteredSymbol) |
             COLOR_PAIR(color));
