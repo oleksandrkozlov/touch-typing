@@ -24,22 +24,6 @@ before_install:
 
 jobs:
   include:
-    - name: Release (GCC)
-      install:
-      - docker build --tag touch_typing .
-      before_script:
-      - docker run -d --name touch_typing --security-opt seccomp=unconfined -v `pwd`:/touch_typing --env GTEST_OUTPUT=xml -ti touch_typing
-      script:
-      - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -GNinja
-      - docker exec touch_typing cmake --build /touch_typing/build --parallel
-    - name: Release (Clang)
-      install:
-      - docker build --tag touch_typing .
-      before_script:
-      - docker run -d --name touch_typing --security-opt seccomp=unconfined -v `pwd`:/touch_typing --env GTEST_OUTPUT=xml --env CC=clang-9 --env CXX=clang++-9 -ti touch_typing
-      script:
-      - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -GNinja
-      - docker exec touch_typing cmake --build /touch_typing/build --parallel
     - name: Debug
       install:
       - docker build --tag touch_typing .
@@ -59,24 +43,6 @@ jobs:
       after_script:
       - ci_env=`bash <(curl -s https://codecov.io/env)`
       - docker exec $ci_env touch_typing /bin/bash -c "bash <(curl -s https://codecov.io/bash) -s /touch_typing/build/kcov"
-    - name: Default sanitizers
-      install:
-      - docker build --tag touch_typing .
-      before_script:
-      - docker run -d --name touch_typing --security-opt seccomp=unconfined -v `pwd`:/touch_typing --env GTEST_OUTPUT=xml -ti touch_typing
-      script:
-      - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -DCMAKE_BUILD_TYPE=Debug -DENABLE_DEFAULT_SANITIZERS=ON -GNinja
-      - docker exec touch_typing cmake --build /touch_typing/build --parallel
-      - docker exec touch_typing cmake --build /touch_typing/build --target test
-    - name: Thread sanitizer
-      install:
-      - docker build --tag touch_typing .
-      before_script:
-      - docker run -d --name touch_typing --security-opt seccomp=unconfined -v `pwd`:/touch_typing --env GTEST_OUTPUT=xml -ti touch_typing
-      script:
-      - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -DCMAKE_BUILD_TYPE=Debug -DENABLE_THREAD_SANITIZER=ON -GNinja
-      - docker exec touch_typing cmake --build /touch_typing/build --parallel
-      - docker exec touch_typing cmake --build /touch_typing/build --target test
     - name: Coverity
       dist: focal
       env:

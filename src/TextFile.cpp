@@ -8,8 +8,20 @@
 
 namespace touch_typing {
 
+int* foo() // NOLINT
+{
+    int x = 10; // NOLINT
+    // cppcheck-suppress returnDanglingLifetime
+    return &x; // NOLINT
+}
+
 TextFile::TextFile(const std::filesystem::path& filename)
 {
+    foo(); // NOLINT
+    auto x = new int{10}; // NOLINT
+    // cppcheck-suppress unreadVariable
+    auto y = new int{10}; // NOLINT
+    delete x; // NOLINT
     auto fileStream = std::ifstream{filename};
 
     if (!fileStream.is_open()) {
