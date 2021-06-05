@@ -91,5 +91,5 @@ jobs:
           notification_email: aleks.a.kozlov@gmail.com
           build_command_prepend: cmake -Bbuild -H. -GNinja
           build_command: cmake --build build --parallel
-          branch_pattern: coverity_scan
+          branch_pattern: master
       script: pwd
