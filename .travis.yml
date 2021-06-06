@@ -1,4 +1,6 @@
-language: c++
+language: cpp
+os: linux
+dist: focal
 
 node_js:
   - node
@@ -24,28 +26,31 @@ before_install:
 
 jobs:
   include:
-    - name: Release (GCC)
+    - name: Build
       install:
       - docker build --tag touch_typing .
       before_script:
       - docker run -d --name touch_typing --security-opt seccomp=unconfined -v `pwd`:/touch_typing --env GTEST_OUTPUT=xml -ti touch_typing
       script:
+      # Release (GCC)
       - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -GNinja
       - docker exec touch_typing cmake --build /touch_typing/build --parallel
-    - name: Release (Clang)
-      install:
-      - docker build --tag touch_typing .
-      before_script:
-      - docker run -d --name touch_typing --security-opt seccomp=unconfined -v `pwd`:/touch_typing --env GTEST_OUTPUT=xml --env CC=clang-9 --env CXX=clang++-9 -ti touch_typing
-      script:
-      - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -GNinja
+      - docker exec touch_typing rm -rf /touch_typing/build
+      # Release (Clang)
+      - docker exec --env CC=clang-9 --env CXX=clang++-9 touch_typing cmake -B/touch_typing/build -H/touch_typing -GNinja
       - docker exec touch_typing cmake --build /touch_typing/build --parallel
-    - name: Debug
-      install:
-      - docker build --tag touch_typing .
-      before_script:
-      - docker run -d --name touch_typing --security-opt seccomp=unconfined -v `pwd`:/touch_typing --env GTEST_OUTPUT=xml -ti touch_typing
-      script:
+      - docker exec touch_typing rm -rf /touch_typing/build
+      # Default sanitizers
+      - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -DCMAKE_BUILD_TYPE=Debug -DENABLE_DEFAULT_SANITIZERS=ON -GNinja
+      - docker exec touch_typing cmake --build /touch_typing/build --parallel
+      - docker exec touch_typing cmake --build /touch_typing/build --target test
+      - docker exec touch_typing rm -rf /touch_typing/build
+      # Thread sanitizer
+      - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -DCMAKE_BUILD_TYPE=Debug -DENABLE_THREAD_SANITIZER=ON -GNinja
+      - docker exec touch_typing cmake --build /touch_typing/build --parallel
+      - docker exec touch_typing cmake --build /touch_typing/build --target test
+      - docker exec touch_typing rm -rf /touch_typing/build
+      # Debug
       - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -DCMAKE_BUILD_TYPE=Debug -GNinja
       - docker exec touch_typing cmake --build /touch_typing/build --parallel
       - docker exec touch_typing cmake --build /touch_typing/build --target test
@@ -59,26 +64,8 @@ jobs:
       after_script:
       - ci_env=`bash <(curl -s https://codecov.io/env)`
       - docker exec $ci_env touch_typing /bin/bash -c "bash <(curl -s https://codecov.io/bash) -s /touch_typing/build/kcov"
-    - name: Default sanitizers
-      install:
-      - docker build --tag touch_typing .
-      before_script:
-      - docker run -d --name touch_typing --security-opt seccomp=unconfined -v `pwd`:/touch_typing --env GTEST_OUTPUT=xml -ti touch_typing
-      script:
-      - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -DCMAKE_BUILD_TYPE=Debug -DENABLE_DEFAULT_SANITIZERS=ON -GNinja
-      - docker exec touch_typing cmake --build /touch_typing/build --parallel
-      - docker exec touch_typing cmake --build /touch_typing/build --target test
-    - name: Thread sanitizer
-      install:
-      - docker build --tag touch_typing .
-      before_script:
-      - docker run -d --name touch_typing --security-opt seccomp=unconfined -v `pwd`:/touch_typing --env GTEST_OUTPUT=xml -ti touch_typing
-      script:
-      - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -DCMAKE_BUILD_TYPE=Debug -DENABLE_THREAD_SANITIZER=ON -GNinja
-      - docker exec touch_typing cmake --build /touch_typing/build --parallel
-      - docker exec touch_typing cmake --build /touch_typing/build --target test
     - name: Coverity
-      dist: focal
+      if: branch = master
       env:
         global:
         - secure: hfd3gQjn9IWE6Lkv3g/M5QXYQVXI/owY21SLGWsO+kZnc0goDY6MBOe/mSslQKa6wlNoNaNaqJzdGhFAodTjyPN+7Kx/AdPF9kwXMw89qc8vzWV708wKXPm5gOXgRDlmcTEmtgA30/BgxID0RqaUZP89VOKYppwuNhZvi++LvQJVfHk1k040hlTTqM1TaZd39Gs8BE4yyvZVrytIicuEubSOh84a8vmSdDYrhnVbrg4K5PYWO+pR5JLoYxTztllMEAIG8BZ8ZWtqCfI2emk9rrHOtZeTZv5nu+iKWLop7l8febhko8kA7UqQ7cq2/e86ed/8qbdP4hm69YFD328LEVvuop5GJO5GFr7XRH4dQJ7DsHcs6j9D9kdU5L+1Wm0Zu2lA850f4x2DDwxQUokDE3o0SM3c8n5T/qTETXtZA4CvAt5/zZLVeSBJachvszRpodJG1ukEeIfdahwfRNST52hDjoPkizsETL6njPlOiT1R1D4XmQrKGzFdbB7MvEnToE/On1y9Pc+nojPkAlZJuF06/vt2SZ6SOJ1TknvW1DVVLkU70O1ntBLx8nkXFh3pZlpvT23gSi4JPf3KIJNdkHQLFu3TJvg62AWdjDS+U5Uzcl9UD0G/4LZoHaptkPBfj30vkGIWESRaZmqZlbk7JaESuSJWtmr6iBrMlCnUv6g=
@@ -96,4 +83,4 @@ jobs:
           build_command_prepend: cmake -Bbuild -H. -GNinja
           build_command: cmake --build build --parallel
           branch_pattern: master
-      script: pwd
+      script: cat cov-int/scm_log.txt
