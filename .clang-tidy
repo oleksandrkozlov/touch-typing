@@ -10,7 +10,9 @@ Checks:          '*,
                   -hicpp-vararg,
                   -hicpp-signed-bitwise,
                   -llvm-header-guard,
-                  -readability-braces-around-statements'
+                  -readability-braces-around-statements,
+                  -llvmlibc-callee-namespace,
+                  -fuchsia-overloaded-operator'
 CheckOptions:
   - key: readability-identifier-naming.InlineNamespaceCase
     value: lower_case

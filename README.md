@@ -57,6 +57,7 @@ touch_typing
 * [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/) >= 0.29
 * [spdlog](https://github.com/gabime/spdlog) >= 1.5
 * [{fmt}](https://fmt.dev/) >= 6.1
+* [Boost Serialization](https://www.boost.org/doc/libs/1_71_0/libs/serialization/doc/index.html) >= 1.71
 
 ### Development Dependencies
 

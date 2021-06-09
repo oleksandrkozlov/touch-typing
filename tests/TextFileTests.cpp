@@ -1,38 +1,15 @@
 #include "TextFile.hpp"
 
-#include <fmt/core.h>
-#include <gtest/gtest.h>
-#include <unistd.h>
+#include "TempFile.hpp"
 
-#include <cstdint>
-#include <cstdlib>
+#include <gtest/gtest.h>
+
 #include <filesystem>
 #include <fstream>
-#include <stdexcept>
 #include <string>
 
 namespace touch_typing {
 namespace {
-
-class TempFile {
-public:
-    TempFile();
-
-    TempFile(TempFile&& other) noexcept = delete;
-    TempFile(const TempFile&) = delete;
-
-    auto operator=(TempFile&& other) noexcept -> TempFile& = delete;
-    auto operator=(const TempFile& other) -> TempFile& = delete;
-
-    ~TempFile() noexcept;
-
-    [[nodiscard]] auto getPath() const noexcept
-        -> const std::filesystem::path&;
-
-private:
-    std::int32_t m_fileDescriptor{};
-    std::filesystem::path m_path;
-};
 
 TEST(TextFileTests, shouldReadTextFile) // NOLINT
 {
@@ -48,32 +25,6 @@ TEST(TextFileTests, shouldReadTextFile) // NOLINT
 
     const auto file = TextFile{filename};
     EXPECT_EQ(file.asString(), text);
-}
-
-TempFile::TempFile()
-{
-    auto templet = fmt::format(
-        "{}/touch_typing_XXXXXX",
-        std::filesystem::temp_directory_path().string());
-
-    m_fileDescriptor = mkstemp(templet.data());
-    const auto errorCode = -1;
-
-    if (m_fileDescriptor == errorCode)
-        throw std::runtime_error{"Cannot create a temp file."};
-
-    m_path = std::filesystem::path{templet};
-}
-
-TempFile::~TempFile() noexcept
-{
-    close(m_fileDescriptor);
-    std::filesystem::remove(m_path);
-}
-
-auto TempFile::getPath() const noexcept -> const std::filesystem::path&
-{
-    return m_path;
 }
 
 } // namespace

@@ -20,9 +20,15 @@ endif()
 
 add_custom_target(
     iwyu
+    COMMAND
+        ${CMAKE_COMMAND} -E env rm CMakeCache.txt && CC=clang CXX=clang++ cmake
+        -H${PROJECT_SOURCE_DIR} -B${CMAKE_BINARY_DIR} -DCMAKE_BUILD_TYPE=Debug -GNinja > /dev/null
+        2>&1
     COMMAND ${Python3_EXECUTABLE} ${IWYU_TOOL_PROGRAM} -o clang -p . -j `nproc` -- -Xiwyu
             --mapping_file=${PROJECT_SOURCE_DIR}/.iwyu | tee iwyu.txt
     COMMAND ! grep error: iwyu.txt > /dev/null 2>&1
+    COMMAND ${CMAKE_COMMAND} -E env rm CMakeCache.txt && cmake -H${PROJECT_SOURCE_DIR}
+            -B${CMAKE_BINARY_DIR} -DCMAKE_BUILD_TYPE=Debug -GNinja > /dev/null 2>&1
     WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
     COMMENT "Analyzing code by 'iwyu'"
 )
