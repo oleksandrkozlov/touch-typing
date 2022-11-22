@@ -79,9 +79,7 @@ touch_typing
 
 ### Continuous Integration Dependencies
 
-* [Bundler](https://bundler.io)
 * [Codecov](https://codecov.io)
-* [Danger](https://danger.systems/ruby)
 * [Docker](https://www.docker.com)
 * [Git](https://git-scm.com)
 * [Node.js](https://nodejs.org)
