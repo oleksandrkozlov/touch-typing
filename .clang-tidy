@@ -1,14 +1,14 @@
 ---
 Checks:          '*,
                   -cppcoreguidelines-pro-type-vararg,
-                  -fuchsia-trailing-return,
                   -fuchsia-default-arguments-calls,
                   -fuchsia-multiple-inheritance,
+                  -fuchsia-trailing-return,
                   -google-readability-braces-around-statements,
                   -google-runtime-references,
                   -hicpp-braces-around-statements,
-                  -hicpp-vararg,
                   -hicpp-signed-bitwise,
+                  -hicpp-vararg,
                   -llvm-header-guard,
                   -readability-braces-around-statements'
 CheckOptions:
