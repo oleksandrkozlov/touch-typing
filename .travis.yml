@@ -18,8 +18,6 @@ services:
   - docker
 
 before_install:
-  - bundle install
-  - bundle exec danger
   - npm install --global @commitlint/cli@8.3.5
   - npm install --global @commitlint/travis-cli@8.3.5
   - commitlint-travis
@@ -37,7 +35,7 @@ jobs:
       - docker exec touch_typing cmake --build /touch_typing/build --parallel
       - docker exec touch_typing rm -rf /touch_typing/build
       # Release (Clang)
-      - docker exec --env CC=clang-9 --env CXX=clang++-9 touch_typing cmake -B/touch_typing/build -H/touch_typing -GNinja
+      - docker exec --env CC=clang --env CXX=clang++ touch_typing cmake -B/touch_typing/build -H/touch_typing -GNinja
       - docker exec touch_typing cmake --build /touch_typing/build --parallel
       - docker exec touch_typing rm -rf /touch_typing/build
       # Default sanitizers
@@ -50,20 +48,23 @@ jobs:
       - docker exec touch_typing cmake --build /touch_typing/build --parallel
       - docker exec touch_typing cmake --build /touch_typing/build --target test
       - docker exec touch_typing rm -rf /touch_typing/build
-      # Debug
+       # Debug (Clang)
+      - docker exec --env CC=clang --env CXX=clang++ touch_typing cmake -B/touch_typing/build -H/touch_typing -DCMAKE_CXX_STANDARD=17 -DCMAKE_BUILD_TYPE=Debug -GNinja
+      - docker exec touch_typing cmake --build /touch_typing/build --target clang-tidy
+      - docker exec touch_typing cmake --build /touch_typing/build --target iwyu
+      - docker exec touch_typing rm -rf /touch_typing/build
+      # Debug (GCC)
       - docker exec touch_typing cmake -B/touch_typing/build -H/touch_typing -DCMAKE_BUILD_TYPE=Debug -GNinja
       - docker exec touch_typing cmake --build /touch_typing/build --parallel
       - docker exec touch_typing cmake --build /touch_typing/build --target test
       - docker exec touch_typing cmake --build /touch_typing/build --target kcov
       - docker exec touch_typing cmake --build /touch_typing/build --target cppcheck
-      - docker exec touch_typing cmake --build /touch_typing/build --target clang-tidy
       - docker exec touch_typing cmake --build /touch_typing/build --target clang-format
       - docker exec touch_typing cmake --build /touch_typing/build --target cmake-format
-      - docker exec touch_typing cmake --build /touch_typing/build --target iwyu
       - docker exec touch_typing cmake --build /touch_typing/build --target docs
       after_script:
       - ci_env=`bash <(curl -s https://codecov.io/env)`
-      - docker exec $ci_env touch_typing /bin/bash -c "bash <(curl -s https://codecov.io/bash) -s /touch_typing/build/kcov"
+      - docker exec $ci_env touch_typing /bin/bash -c "bash <(curl -s https://codecov.io/bash) -y /touch_typing/codecov.yml -s /touch_typing/build/kcov"
     - name: Coverity
       if: (NOT type IN (pull_request)) AND (branch = master)
       env:

@@ -1,5 +1,7 @@
 ---
 Checks:          '*,
+                  -altera-struct-pack-align,
+                  -altera-unroll-loops,
                   -cppcoreguidelines-pro-type-vararg,
                   -fuchsia-default-arguments-calls,
                   -fuchsia-multiple-inheritance,
@@ -10,6 +12,10 @@ Checks:          '*,
                   -hicpp-signed-bitwise,
                   -hicpp-vararg,
                   -llvm-header-guard,
+                  -llvm-include-order,
+                  -llvmlibc-callee-namespace,
+                  -llvmlibc-implementation-in-namespace,
+                  -llvmlibc-restrict-system-libc-headers,
                   -readability-braces-around-statements'
 CheckOptions:
   - key: readability-identifier-naming.InlineNamespaceCase
