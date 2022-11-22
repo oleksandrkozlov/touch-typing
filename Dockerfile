@@ -1,10 +1,10 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.10
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y \
     ccache \
-    clang-9 \
+    clang \
     clang-format \
     clang-tidy \
     cmake \
@@ -30,7 +30,7 @@ RUN pip3 install \
     sphinx \
     sphinx_rtd_theme
 
-RUN git clone --depth=1 --branch v3.1.0 \
+RUN git clone --depth=1 --branch v4.0.0 \
     https://github.com/microsoft/GSL.git gsl \
     && cmake -Hgsl -Bgsl/build -GNinja -DCMAKE_BUILD_TYPE=Release -DGSL_TEST=OFF \
     && cmake --build gsl/build --target install --parallel \

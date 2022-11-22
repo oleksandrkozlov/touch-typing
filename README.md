@@ -50,46 +50,46 @@ touch_typing
 
 ### Dependencies
 
-* [CMake](https://cmake.org) >= 3.16
-* [GSL](https://github.com/microsoft/GSL) >= 3.1
-* [Ncurses](https://invisible-island.net/ncurses/) >= 6.2
-* [docopt.cpp](https://github.com/docopt/docopt.cpp) >= 0.6
-* [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/) >= 0.29
-* [spdlog](https://github.com/gabime/spdlog) >= 1.5
-* [{fmt}](https://fmt.dev/) >= 6.1
+* [CMake](https://cmake.org)
+* [GSL](https://github.com/microsoft/GSL)
+* [Ncurses](https://invisible-island.net/ncurses/)
+* [docopt.cpp](https://github.com/docopt/docopt.cpp)
+* [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/)
+* [spdlog](https://github.com/gabime/spdlog)
+* [{fmt}](https://fmt.dev/)
 
 ### Development Dependencies
 
-* [Breathe](https://breathe.readthedocs.io) >= 4.22
-* [Clang-Tidy](https://releases.llvm.org/10.0.0/tools/clang/tools/extra/docs/clang-tidy/) >= 10.0
-* [ClangFormat](https://releases.llvm.org/10.0.0/tools/clang/docs/ClangFormat.html) >= 10.0
-* [Conventional Commits](https://www.conventionalcommits.org) >= 1.0
-* [Cppcheck](http://cppcheck.sourceforge.net) >= 1.90
-* [Doxygen](https://www.doxygen.nl) >= 1.8
-* [Google Test](https://github.com/google/googletest) >= 1.10
-* [Graphviz](https://graphviz.org) >= 2.42
-* [Kcov](http://simonkagstrom.github.io/kcov/) >= 38.0
-* [Ninja](https://ninja-build.org) >= 1.10
-* [Python](https://www.python.org) >= 3.8
-* [Read the Docs Sphinx Theme](https://sphinx-rtd-theme.readthedocs.io) >= 0.5
-* [Sphinx](https://www.sphinx-doc.org) >= 3.2
-* [ccache](https://ccache.dev) >= 3.7
-* [cmake language tools](https://cmake-format.readthedocs.io) >= 0.6
-* [include-what-you-use](https://include-what-you-use.org) >= 0.13
+* [Breathe](https://breathe.readthedocs.io)
+* [Clang-Tidy](https://clang.llvm.org/extra/clang-tidy/)
+* [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html)
+* [Conventional Commits](https://www.conventionalcommits.org)
+* [Cppcheck](http://cppcheck.sourceforge.net)
+* [Doxygen](https://www.doxygen.nl)
+* [Google Test](https://github.com/google/googletest)
+* [Graphviz](https://graphviz.org)
+* [Kcov](http://simonkagstrom.github.io/kcov/)
+* [Ninja](https://ninja-build.org)
+* [Python](https://www.python.org)
+* [Read the Docs Sphinx Theme](https://sphinx-rtd-theme.readthedocs.io)
+* [Sphinx](https://www.sphinx-doc.org)
+* [ccache](https://ccache.dev)
+* [cmake language tools](https://cmake-format.readthedocs.io)
+* [include-what-you-use](https://include-what-you-use.org)
 
 ### Continuous Integration Dependencies
 
-* [Bundler](https://bundler.io) >= 2.1
+* [Bundler](https://bundler.io)
 * [Codecov](https://codecov.io)
-* [Danger](https://danger.systems/ruby) >= 8.0
-* [Docker](https://www.docker.com) > 18.6
-* [Git](https://git-scm.com) >= 2.25
-* [Node.js](https://nodejs.org) >= 8.12
+* [Danger](https://danger.systems/ruby)
+* [Docker](https://www.docker.com)
+* [Git](https://git-scm.com)
+* [Node.js](https://nodejs.org)
 * [Read the Docs](https://readthedocs.org)
-* [Ruby](https://www.ruby-lang.org) >= 2.5
-* [commitlint](https://commitlint.js.org) >= 8.3
-* [curl](https://curl.haxx.se) >= 7.68
-* [nmp](https://www.npmjs.com) >= 6.14
+* [Ruby](https://www.ruby-lang.org)
+* [commitlint](https://commitlint.js.org)
+* [curl](https://curl.haxx.se)
+* [nmp](https://www.npmjs.com)
 
 ### Roadmap
 
