@@ -15,9 +15,12 @@ RUN apt-get update && apt-get install -y \
     graphviz \
     iwyu \
     kcov \
+    libc++-dev \
+    libc++abi-15-dev \
     libdocopt-dev \
     libfmt-dev \
     libgtest-dev \
+    libmsgsl-dev \
     libspdlog-dev \
     ninja-build \
     pkg-config \
@@ -29,9 +32,3 @@ RUN pip3 install \
     cmakelang \
     sphinx \
     sphinx_rtd_theme
-
-RUN git clone --depth=1 --branch v4.0.0 \
-    https://github.com/microsoft/GSL.git gsl \
-    && cmake -Hgsl -Bgsl/build -GNinja -DCMAKE_BUILD_TYPE=Release -DGSL_TEST=OFF \
-    && cmake --build gsl/build --target install --parallel \
-    && rm -rf gsl

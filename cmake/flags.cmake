@@ -1,13 +1,8 @@
 set(CMAKE_CXX_EXTENSIONS OFF)
-if(NOT CMAKE_CXX_STANDARD)
-    set(CMAKE_CXX_STANDARD 23)
-else()
-    set(CMAKE_CXX_STANDARD ${CMAKE_CXX_STANDARD})
-endif()
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(CMAKE_VISIBILITY_INLINES_HIDDEN ON)
+set(PREBUILT_MODULE_PATH ${CMAKE_BINARY_DIR}/modules)
 
 add_compile_options(
     "$<$<CXX_COMPILER_ID:GNU>:-Wduplicated-branches;-Wduplicated-cond;-Wlogical-op;-Wuseless-cast>"
@@ -25,4 +20,7 @@ add_compile_options(
     -Wpedantic
     -Wshadow
     -Wunused
+    -fmodules
+    -stdlib=libc++
+    -fprebuilt-module-path=${PREBUILT_MODULE_PATH}
 )

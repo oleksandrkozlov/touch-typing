@@ -1,7 +1,6 @@
-#ifndef TOUCH_TYPING_OUTPUT_RESULT_HPP
-#define TOUCH_TYPING_OUTPUT_RESULT_HPP
+export module touch_typing:OutputResult;
 
-namespace touch_typing {
+export namespace touch_typing {
 
 struct OutputResult {
     enum class Answer {
@@ -16,5 +15,3 @@ struct OutputResult {
 };
 
 } // namespace touch_typing
-
-#endif // TOUCH_TYPING_OUTPUT_RESULT_HPP

@@ -1,22 +1,17 @@
-#include "Controller.hpp"
-#include "CursesPresenter.hpp"
-#include "Input.hpp"
-#include "Interactor.hpp"
-#include "Output.hpp"
-#include "TextFile.hpp"
-#include "TextStorage.hpp"
-
+#define DOCOPT_HEADER_ONLY
 #include <docopt/docopt.h>
 #include <docopt/docopt_value.h>
+#define SPDLOG_HEADER_ONLY
 #include <spdlog/spdlog.h>
 
-#include <exception>
-#include <filesystem>
-#include <iterator>
-#include <map>
-#include <memory>
-#include <string>
-#include <utility>
+import <exception>;
+import <filesystem>;
+import <iterator>;
+import <map>;
+import <memory>;
+import <string>;
+import <utility>;
+import touch_typing;
 
 namespace {
 
@@ -30,7 +25,7 @@ Options:
 
 } // namespace
 
-auto main(int argc, char** argv) -> int
+auto main(int argc, char** argv) noexcept -> int
 {
     try {
         spdlog::info("Welcome to Touch Typing!");
@@ -42,27 +37,28 @@ auto main(int argc, char** argv) -> int
 
         const auto filename = arguments.at("<file>")
             ? arguments.at("<file>").asString()
-            : TOUCH_TYPING_DATA_DIR + "/0001-text.txt"s;
+            : "/usr/local/share/0001-text.txt"s;
 
         const auto text = touch_typing::TextFile{filename};
         auto texts = touch_typing::TextStorage::Texts{text.asString()};
 
-        auto presenter = std::unique_ptr<touch_typing::Output>{
-            std::make_unique<touch_typing::CursesPresenter>()};
+        auto presenter = touch_typing::CursesPresenter{};
 
         auto textStorage = touch_typing::TextStorage{std::move(texts)};
 
-        auto interactor = std::unique_ptr<touch_typing::Input>{
-            std::make_unique<touch_typing::Interactor>(
-                textStorage, *presenter)};
+        auto interactor = touch_typing::Interactor{textStorage, presenter};
 
-        auto controller = touch_typing::Controller{*interactor};
+        auto controller = touch_typing::Controller{interactor};
 
         controller.readSymbols();
 
         return 0;
     } catch (const std::exception& error) {
-        spdlog::error(error.what());
-        return 1;
+        try {
+            spdlog::error(error.what());
+        } catch (...) {
+        }
+    } catch (...) {
     }
+    return 1;
 }
